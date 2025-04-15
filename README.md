@@ -17,10 +17,10 @@ Formül:
 $$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)$$
 
 Burada:
-$q(x_t | x_{t-1})$: $t-1$ adımından $t$ adımına geçiş olasılığı.
-$\mathcal{N}$: Gaussian (normal) dağılım.
-$\beta_t$: $t$ adımında eklenen gürültü miktarı.
-$I$: Birim matris.
+- $q(x_t | x_{t-1})$: $t-1$ adımından $t$ adımına geçiş olasılığı.
+- $\mathcal{N}$: Gaussian (normal) dağılım.
+- $\beta_t$: $t$ adımında eklenen gürültü miktarı.
+- $I$: Birim matris.
 
 ### İleri Süreç Kısayolu
 
@@ -42,9 +42,9 @@ Formül:
 $$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
 
 Burada:
-$p_\theta$: Sinir ağı parametreleri $\theta$ ile tanımlı olasılık.
-$\mu_\theta(x_t, t)$: Sinir ağının tahmin ettiği ortalama.
-$\Sigma_\theta(x_t, t)$: Varyans (genelde $\beta_t I$ olarak alınır) veya bir ölçeklendirilmiş versiyonu:
+- $p_\theta$: Sinir ağı parametreleri $\theta$ ile tanımlı olasılık.
+- $\mu_\theta(x_t, t)$: Sinir ağının tahmin ettiği ortalama.
+- $\Sigma_\theta(x_t, t)$: Varyans (genelde $\beta_t I$ olarak alınır) veya bir ölçeklendirilmiş versiyonu:
 
 $$\Sigma_\theta(x_t, t) = \frac{1 - \bar{\alpha}_{t-1}}{1 - \bar{\alpha}_t} \beta_t I$$
 
@@ -56,7 +56,7 @@ Geri süreçte sinir ağı, gürültüyü ($\epsilon$) tahmin eder ve ortalama �
 $$\mu_\theta(x_t, t) = \frac{1}{\sqrt{1-\beta_t}} \left( x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t) \right)$$
 
 Burada:
-$\epsilon_\theta(x_t, t)$: Sinir ağının $t$ adımında tahmin ettiği gürültü.
+- $\epsilon_\theta(x_t, t)$: Sinir ağının $t$ adımında tahmin ettiği gürültü.
 
 ### Kayıp Fonksiyonu
 
@@ -67,8 +67,8 @@ Formül:
 $$L = \mathbb{E}_{x_0, \epsilon, t} \left[ || \epsilon - \epsilon_\theta(x_t, t) ||^2 \right]$$
 
 Burada:
-$\mathbb{E}$: Beklenen değer (ortalama).
-$|| \cdot ||^2$: Mean Squared Error (MSE).
+- $\mathbb{E}$: Beklenen değer (ortalama).
+- $|| \cdot ||^2$: Mean Squared Error (MSE).
 
 ## UNet Mimarisi
 
@@ -87,6 +87,3 @@ Her blokta genellikle konvolüsyon katmanları, normalizasyon (örneğin grup no
 - **Cross-Attention:** Stable Diffusion'ın metin yönlendirmeli çalışmasını sağlar. Örneğin, "bir kedi" prompt'u, mid blokta görüntüye entegre edilir.
 
 ![UNet Architecture](https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs11554-021-01166-z/MediaObjects/11554_2021_1166_Fig7_HTML.png)
-
-![x0_0](https://github.com/user-attachments/assets/ea659824-e7c3-463a-9906-c322bdf9197f)
-
